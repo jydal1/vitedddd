@@ -20,7 +20,7 @@ function App() {
 
     useEffect(() => {
         async function fetchCounter() {
-            const response = await fetch('http://127.0.0.1:5173/counter/');
+            const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/');
             const data = await response.json();
             setCounter(data.count);
         }
@@ -41,7 +41,7 @@ function App() {
         const clientX = e.clientX;
         const clientY = e.clientY;
         
-        const response = await fetch('http://127.0.0.1:5173/counter/increment/', {
+        const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/increment/', {
             method: 'POST'
         });
         const data = await response.json();
