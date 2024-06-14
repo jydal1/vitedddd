@@ -1,0 +1,280 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Changa", sans-serif;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.floating-text {
+    position: absolute;
+    animation: float 1s ease-out forwards;
+    pointer-events: none;
+    color: black;
+    font-size: 25px; 
+    font-weight: bold; 
+}
+
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.box img:active {
+    scale: 0.98;
+}
+
+.counter {
+    position: relative;
+    font-size: 2em;
+    color: white;
+    position: relative;
+    font-weight: bold;
+    background-color: #4B0082;
+    border-radius: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 10px 5px;
+    width: 60%;
+    max-width: 350px;
+}
+
+.hello {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.bottomenu {
+  display: flex;
+  position: fixed;
+  bottom: 30px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  background-color: #4B0082; 
+  border-radius: 20px; 
+  padding: 10px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.menucontainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-55 {
+  font-family: "Changa", sans-serif;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 10px;
+  width: 70px; 
+  height: 60px; 
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  margin: 0 20px;
+}
+
+.button-55:hover {
+  transform: translateY(-5px);
+}
+
+.button-55:active {
+  transform: translateY(0);
+}
+
+.button-55 svg {
+  margin-bottom: 5px; /* Відступ між іконкою та текстом */
+  font-size: 18px; /* Розмір іконки */
+}
+
+.invite-container {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.invite-earnings {
+  background: #4B0082;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+.earnings-header {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.earned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.earned-icon {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.earned-amount {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+.ref-link {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.copy-button {
+  border: none;
+  font-family: "Changa", sans-serif;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 10px;
+  width: 130px; 
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+}
+
+.invite-info {
+  font-size: 0.8em;
+  color: white;
+}
+
+.invite-stats {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 5px;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+.referral {
+  display: flex;
+  justify-content: space-between;
+  background: #4B0082;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.referral-name {
+  text-align: left;
+}
+
+.referral-clicks {
+  text-align: right;
+}
+
+.invite-stats h2 {
+  margin-bottom: 10px;
+}
+
+.invite-stats p {
+  font-size: 0.8em;
+  color: #888888;
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.task-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4B0082;
+  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.claim-button{
+  border: none;
+  font-family: "Changa", sans-serif;
+  background-color: white;
+  margin-left: 15px;
+  padding: 2px 5px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.task-text p {
+  margin: 0;
+}
+
+.reward {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.task-button {
+  font-family: "Changa", sans-serif;
+  background-color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+}
+
+.task-button:hover {
+  background-color: #f0f0f0;
+}
