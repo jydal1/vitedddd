@@ -22,7 +22,7 @@ const Friends: React.FC<FriendsProps> = ({ addToCounter }) => {
     useEffect(() => {
         const fetchUserId = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5173/user/');
+                const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/user/');
                 if (response.ok) {
                     const data = await response.json();
                     setUserId(data.user_id);
@@ -61,7 +61,7 @@ const Friends: React.FC<FriendsProps> = ({ addToCounter }) => {
         const fetchReferrals = async () => {
             if (userId !== null) {
                 try {
-                    const response = await fetch(`http://127.0.0.1:5173/referrals/${userId}`);
+                    const response = await fetch(`https://devbackend-f7a664bc1045.herokuapp.com/referrals/${userId}`);
                     if (response.ok) {
                         const data = await response.json();
                         setReferrals(data.referrals);
@@ -98,7 +98,7 @@ const Friends: React.FC<FriendsProps> = ({ addToCounter }) => {
     const claimEarnings = async () => {
         if (earnedAmount > 0 && userId !== null) {
             try {
-                const response = await fetch(`http://127.0.0.1:5173/referrals/claim/${userId}`, {
+                const response = await fetch(`https://devbackend-f7a664bc1045.herokuapp.com/referrals/claim/${userId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
