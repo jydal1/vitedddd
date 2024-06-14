@@ -38,12 +38,20 @@ function App() {
     }, []);
 
     async function handleClick(e: React.MouseEvent) {
-        const clientX = e.clientX;
-        const clientY = e.clientY;
-        
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    try {
         const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/increment/', {
-            method: 'POST'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ amount: 1 }), // Передаємо значення, на яке інкрементуємо
         });
+        if (!response.ok) {
+            throw new Error('Failed to increment counter');
+        }
         const data = await response.json();
         setCounter(data.count);
         localStorage.setItem('Counter', data.count.toString());
@@ -56,7 +64,10 @@ function App() {
             const y = clientY - boxRect.top;
             addFloatingElement(x, y, '+1');
         }
+    } catch (error) {
+        console.error(error);
     }
+}
 
     function addFloatingElement(x: number, y: number, text: string) {
         const id = uuidv4();
@@ -80,7 +91,7 @@ function App() {
                 return (
                     <>
                         <div className='hello'>
-                            <h1>👋Hello</h1>
+                            <h1>👋Hello, </h1>
                         </div>
                         <div className="box" style={{ position: 'relative' }}>
                             <span className='counter'>🦈{counter}</span>
