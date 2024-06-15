@@ -92,7 +92,7 @@ function renderView() {
             return (
                 <>
                     <div className='hello'>
-                        <h1>👋Hello, ss</h1>
+                        <h1>👋Hello, s1s</h1>
                     </div>
                     <div className="box" style={{ position: 'relative' }}>
                         <span className='counter'>🦈{counter}</span>
