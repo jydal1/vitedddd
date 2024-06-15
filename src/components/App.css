@@ -24,6 +24,7 @@ html, body, #root {
     color: black;
     font-size: 25px; 
     font-weight: bold; 
+    touch-action: none;
 }
 
 @keyframes float {
