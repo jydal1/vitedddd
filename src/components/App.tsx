@@ -38,36 +38,36 @@ function App() {
     }, []);
 
     async function handleClick(e: React.MouseEvent) {
-    const clientX = e.clientX;
-    const clientY = e.clientY;
-
-    try {
-        const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/increment/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ amount: 1 }), // Передаємо значення, на яке інкрементуємо
-        });
-        if (!response.ok) {
-            throw new Error('Failed to increment counter');
+        const clientX = e.clientX;
+        const clientY = e.clientY;
+    
+        try {
+            const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/increment/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ amount: 1 }), // Передаємо значення, на яке інкрементуємо
+            });
+            if (!response.ok) {
+                throw new Error('Failed to increment counter');
+            }
+            const data = await response.json();
+            setCounter(data.count);
+            localStorage.setItem('Counter', data.count.toString());
+    
+            const currentTarget = e.currentTarget as HTMLElement | null;
+    
+            if (currentTarget) {
+                const boxRect = currentTarget.getBoundingClientRect();
+                const x = clientX - boxRect.left;
+                const y = clientY - boxRect.top;
+                addFloatingElement(x, y, '+1');
+            }
+        } catch (error) {
+            console.error(error);
         }
-        const data = await response.json();
-        setCounter(data.count);
-        localStorage.setItem('Counter', data.count.toString());
-
-        const currentTarget = e.currentTarget as HTMLElement | null;
-
-        if (currentTarget) {
-            const boxRect = currentTarget.getBoundingClientRect();
-            const x = clientX - boxRect.left;
-            const y = clientY - boxRect.top;
-            addFloatingElement(x, y, '+1');
-        }
-    } catch (error) {
-        console.error(error);
     }
-}
 
     function addFloatingElement(x: number, y: number, text: string) {
         const id = uuidv4();
