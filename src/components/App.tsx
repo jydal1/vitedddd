@@ -18,27 +18,28 @@ const [counter, setCounter] = useState<number>(0);
 const [currentView, setCurrentView] = useState<string>('home');
 const [floatingElements, setFloatingElements] = useState<FloatingElement[]>([]);
 useEffect(() => {
-    async function fetchCounter() {
-        const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/');
+    async function fetchCounter(user_id: string) {
+        const response = await fetch(`https://devbackend-f7a664bc1045.herokuapp.com/counter/${user_id}`);
         const data = await response.json();
         setCounter(data.count);
     }
-    fetchCounter();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const user_id = urlParams.get('user_id') || localStorage.getItem('user_id');
+    if (user_id) {
+        localStorage.setItem('user_id', user_id);
+        fetchCounter(user_id);
+    }
 
     if (window.Telegram && window.Telegram.WebApp) {
         window.Telegram.WebApp.expand();
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const telegram_id = urlParams.get('telegram_id');
-    if (telegram_id) {
-        localStorage.setItem('telegram_id', telegram_id);
     }
 }, []);
 
 async function handleClick(e: React.MouseEvent) {
     const clientX = e.clientX;
     const clientY = e.clientY;
+    const user_id = localStorage.getItem('user_id');
 
     try {
         const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/counter/increment/', {
@@ -46,7 +47,7 @@ async function handleClick(e: React.MouseEvent) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount: 1 }), // Передаємо значення, на яке інкрементуємо
+            body: JSON.stringify({ user_id, amount: 1 }),
         });
         if (!response.ok) {
             throw new Error('Failed to increment counter');
@@ -67,6 +68,7 @@ async function handleClick(e: React.MouseEvent) {
         console.error(error);
     }
 }
+
 
 function addFloatingElement(x: number, y: number, text: string) {
     const id = uuidv4();
