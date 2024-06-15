@@ -91,7 +91,7 @@ function App() {
                 return (
                     <>
                         <div className='hello'>
-                            <h1>👋Hello, sss</h1>
+                            <h1>👋Hello, ss</h1>
                         </div>
                         <div className="box" style={{ position: 'relative' }}>
                             <span className='counter'>🦈{counter}</span>

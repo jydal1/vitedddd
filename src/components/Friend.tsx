@@ -41,7 +41,7 @@ const Friends: React.FC<FriendsProps> = ({ addToCounter }) => {
         const fetchReferralLink = async () => {
             if (userId !== null) {
                 try {
-                    const response = await fetch(`http://127.0.0.1:5173/referral/${userId}`);
+                    const response = await fetch(`https://devbackend-f7a664bc1045.herokuapp.com/referral/${userId}`);
                     if (response.ok) {
                         const data = await response.json();
                         setReferralLink(data.referral_link);
