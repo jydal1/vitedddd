@@ -20,21 +20,10 @@ const Friends: React.FC<FriendsProps> = ({ addToCounter }) => {
     const [earnedAmount, setEarnedAmount] = useState<number>(0);
 
     useEffect(() => {
-        const fetchUserId = async () => {
-            try {
-                const response = await fetch('https://devbackend-f7a664bc1045.herokuapp.com/user/');
-                if (response.ok) {
-                    const data = await response.json();
-                    setUserId(data.user_id);
-                } else {
-                    console.error('Failed to fetch user ID');
-                }
-            } catch (error) {
-                console.error('Error fetching user ID:', error);
-            }
-        };
-
-        fetchUserId();
+        const telegramId = localStorage.getItem('telegram_id');
+        if (telegramId) {
+            setUserId(parseInt(telegramId));
+        }
     }, []);
 
     useEffect(() => {
